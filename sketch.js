@@ -448,7 +448,7 @@ function computeHandMetrics(landmarks, handIndex) {
 // determine which mode based on hand metrics
 function determineMode(metrics) {
     // focus mode: closed fist (small area)
-    if (metrics.handArea < 15000) {
+    if (metrics.handArea < 30000) {
         return 'focus';
     }
 
@@ -458,11 +458,11 @@ function determineMode(metrics) {
     }
 
     // calm mode: open hand
-    if (metrics.handSpan > 50) {
+    if (metrics.handSpan > 100) {
         return 'calm';
     }
 
-    return 'calm';  // default to calm
+     return 'calm';  // default to calm
 }
 
 // get visual properties for each mode
