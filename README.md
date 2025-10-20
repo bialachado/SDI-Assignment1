@@ -126,10 +126,10 @@ Assignment1/
 
 ## Browser Compatibility
 
-- Chrome/Chromium: ✅ Full support
-- Firefox: ✅ Full support
-- Safari: ✅ Full support (iOS 13+)
-- Edge: ✅ Full support
+- Chrome/Chromium: Full support
+- Firefox: Full support
+- Safari: Full support (iOS 13+)
+- Edge: Full support
 
 ## Performance Notes
 
