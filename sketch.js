@@ -315,7 +315,7 @@ function draw() {
         return;
     }
 
-    // send video frame to MediaPipe for hand detection
+    // send video frame to MediaPipe for hand detection (throttled to prevent memory errors)
     if (hands && video && frameCount % 2 === 0 && isReady) {
         try {
             // get the raw video element
@@ -323,7 +323,7 @@ function draw() {
             
             // check if video is ready
             if (videoElement && videoElement.readyState === 4) {
-                hands.send({image: videoElement});  // send every other frame for performance
+                hands.send({image: videoElement});  // send every other frame for stability
             }
         } catch (error) {
             console.error('Error sending frame to MediaPipe:', error);
@@ -362,7 +362,7 @@ function draw() {
         updateFlowField();                  // recalculate flow each frame
     }
 
-    // process detected hands
+    // process detected hands - spawn particles every frame for smooth continuous effect
     if (predictions.length > 0) {
         handStatusDot.classList.add('active');  // show hand detected
         handStatusDot.classList.remove('inactive');
@@ -371,7 +371,7 @@ function draw() {
             const landmarks = predictions[h].landmarks;  // 21 points
             const metrics = computeHandMetrics(landmarks, h);  // calculate metrics
             const mode = determineMode(metrics);  // figure out which mode
-            spawnFromHand(landmarks, mode);  // create particles
+            spawnFromHand(landmarks, mode);  // create particles every frame
             drawHandAbstract(landmarks, mode);  // draw skeleton
         }
     } else {
@@ -448,7 +448,7 @@ function computeHandMetrics(landmarks, handIndex) {
 // determine which mode based on hand metrics
 function determineMode(metrics) {
     // focus mode: closed fist (small area)
-    if (metrics.handArea < 30000) {
+    if (metrics.handArea < 15000) {
         return 'focus';
     }
 
@@ -458,7 +458,7 @@ function determineMode(metrics) {
     }
 
     // calm mode: open hand
-    if (metrics.handSpan > 200) {
+    if (metrics.handSpan > 50) {
         return 'calm';
     }
 
