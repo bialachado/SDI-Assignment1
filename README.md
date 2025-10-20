@@ -126,10 +126,10 @@ Assignment1/
 
 ## Browser Compatibility
 
-- Chrome/Chromium: ✅ Full support
-- Firefox: ✅ Full support
-- Safari: ✅ Full support (iOS 13+)
-- Edge: ✅ Full support
+- Chrome/Chromium: Full support
+- Firefox: Full support
+- Safari: Full support (iOS 13+)
+- Edge: Full support
 
 ## Performance Notes
 
@@ -154,23 +154,3 @@ Assignment1/
 ## License
 
 This project is for educational purposes.
-
-## Troubleshooting
-
-**"Initializing..." stays on screen**
-- Check browser console for errors (F12 → Console)
-- Ensure camera access is granted
-- Try refreshing the page
-- Check internet connection for library loading
-
-**No hand detected (red indicator)**
-- Ensure adequate lighting
-- Check camera is working (test in other apps)
-- Position hand clearly in frame
-- Make sure hand is open enough or closed enough for detection
-
-**Particles not appearing**
-- Check that hand is detected (green indicator)
-- Try making a fist (Focus mode) which has less strict requirements
-- Ensure JavaScript is enabled
-- Check browser compatibility
