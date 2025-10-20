@@ -154,9 +154,3 @@ Assignment1/
 ## License
 
 This project is for educational purposes.
-
-**Particles not appearing**
-- Check that hand is detected (green indicator)
-- Try making a fist (Focus mode) which has less strict requirements
-- Ensure JavaScript is enabled
-- Check browser compatibility
