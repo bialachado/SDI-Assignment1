@@ -17,7 +17,7 @@ let video;                    // camera video input
 let hands;                    // mediapose hands object for detecting hand landmarks
 let predictions = [];         // stores the hand position data each frame
 let videoAspect = 640 / 480;  // aspect ratio for video input
-let previousPalmPos = {};     // tracks last palm position to calculate speed
+let previousPalmPos = {};     // tracks last palm position for each hand to calculate speed
 let isReady = false;          // flag to check if model is loaded
 
 // Particle system - manages all the particles
@@ -457,8 +457,8 @@ function determineMode(metrics) {
         return 'chaos';
     }
 
-    // calm mode: open hand (large span)
-    if (metrics.handSpan > 150) {
+    // calm mode: open hand
+    if (metrics.handSpan > 200) {
         return 'calm';
     }
 
