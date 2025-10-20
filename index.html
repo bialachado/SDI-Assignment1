@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- basic html setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinetic Handscape</title>
+    <!-- link css file -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- load libraries in order: TensorFlow for computing, MediaPipe for hand detection, p5.js for drawing -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4"></script>  <!-- tensorflow core -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl@4"></script>  <!-- gpu acceleration -->
+    <script src="https://unpkg.com/@mediapipe/hands/hands.js"></script>  <!-- hand detection -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>  <!-- p5.js for graphics -->
+</head>
+<body>
+    <!-- page layout with ui on top of canvas -->
+
+    <!-- title in top left -->
+    <div id="project-header">
+        <h3>Kinetic Handscape</h3>
+    </div>
+
+    <!-- status stuff in top right -->
+    <div id="ui-container">
+        <!-- shows if hand is detected (green = detected, red = no hand) -->
+        <div class="status-card">
+            <div id="hand-status-dot" class="status-dot inactive"></div>
+            <span id="hand-text">Initializing...</span>
+        </div>
+    </div>
+
+    <!-- instructions in bottom left - tells user what gestures to use -->
+    <div id="instructions-box">
+        <h2>Interaction Guide</h2>
+        <div class="instruction">
+            <strong class="calm">Calm</strong>  <!-- open hand mode -->
+            <small>Open hand: relaxed, extended fingers</small>
+        </div>
+        <div class="instruction">
+            <strong class="focus">Focus</strong>  <!-- closed fist mode -->
+            <small>Closed fist: concentrates energy</small>
+        </div>
+        <div class="instruction">
+            <strong class="chaos">Chaos</strong>  <!-- fast movement mode -->
+            <small>Rapid movement: aggressive motion</small>
+        </div>
+    </div>
+
+    <!-- color legend in bottom right - shows what each color means -->
+    <div id="legend" class="legend">
+        <h4>Color Legend</h4>
+        <div class="legend-item">
+            <div class="color-swatch calm"></div>
+            <span>Calm Mode</span>
+        </div>
+        <div class="legend-item">
+            <div class="color-swatch focus"></div>
+            <span>Focus Mode</span>
+        </div>
+        <div class="legend-item">
+            <div class="color-swatch chaos"></div>
+            <span>Chaos Mode</span>
+        </div>
+    </div>
+
+    <!-- main code - runs the whole thing -->
+    <script src="sketch.js"></script>
+</body>
+</html>
